@@ -15,6 +15,7 @@ func Compression(next http.Handler) http.Handler {
 		// Check of the client accepts gzip encoding
 		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
 			next.ServeHTTP(w, r)
+			return
 		}
 
 		// Set the respone header
